@@ -21,7 +21,10 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-    kotlinOptions { jvmTarget = "17" }
+}
+
+kotlin {
+    compilerOptions { jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17) }
 }
 
 dependencies {
@@ -30,7 +33,5 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("com.journeyapps:zxing-android-embedded:4.3.0")
     implementation("androidx.work:work-runtime-ktx:2.9.1")
-    // v10: on-device function-calling model (FunctionGemma 270M) through Google's LiteRT-LM runtime. 100% local inference.
-    // Docs say "latest.release"; once the first build works, replace it with the exact version Gradle resolved.
-    implementation("com.google.ai.edge.litertlm:litertlm-android:latest.release")
+    implementation("com.google.ai.edge.litertlm:litertlm-android:0.18.1")
 }
